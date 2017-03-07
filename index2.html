@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Drop V2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <div id="root">
+        <main>
+        <header id="header">
+            <ul class="nav horizontal">
+            <li><a href="javascript:{}" onclick="myDrop.open('drop-1');">Open Dropdown 1</a></li>
+            <li><a href="javascript:{}" onclick="myDrop.close('drop-1');">Close Dropdown 1</a></li>
+            <li><a href="javascript:{}" class="dynamic-drop">Register a new Dropdown</a></li>
+            </ul>
+        </header>
+        <div id="content">
+            <div class="scrollable">
+                <div class="container">
+                    <h2>Drop V2</h2>
+                    <code>Drop();</code>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dolorum culpa, molestias tempore ab id aut cumque sed sunt temporibus dolore, voluptate quae voluptatibus eligendi praesentium veritatis autem modi, vero.</p>
+                    <p>
+                    <div class="drop" data-drop>
+                        <button class="drop-button" data-drop-button>Dropdown 1</button>
+                        <div class="drop-container" data-drop-container>
+                        <span class="drop-close" data-drop-close>X</span>
+                        <p>This is Dropdown 1 container.</p>
+                        <ul class="nav">
+                            <li><a href="javascript:{}">Link #1</a></li>
+                            <li><a href="javascript:{}">Link #2</a></li>
+                            <li><a href="javascript:{}">Link #3</a></li>
+                        </ul>
+                        </div>
+                        <!--<div class="drop-container" data-drop-container><p>It shouldn't be showing this container. It's just for testing purposes.</p></div>-->
+                    </div>
+                    Architecto repellendus natus quis animi earum quidem, culpa eos nobis adipisci hic eius sit tenetur reiciendis quo, molestias itaque sint qui est ad facere repudiandae. Magnam quasi, modi nihil numquam!</p>
+                <p>
+                    <div class="drop" id="" data-drop data-drop-onhover>
+                        <button class="drop-button" data-drop-button>Dropdown 2</button>
+                        <div class="drop-container" data-drop-container>
+                        <span class="drop-close" data-drop-close>X</span>
+                        <p>This is Dropdown 2 container.</p>
+                        <ul class="nav">
+                            <li><a href="javascript:{}">Link #1</a></li>
+                            <li><a href="javascript:{}">Link #2</a></li>
+                            <li><a href="javascript:{}">Link #3</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                </p>
+                <p>Debitis nisi minima eligendi itaque animi, esse natus ducimus alias voluptate modi? Porro nam laborum soluta numquam voluptates voluptate provident. Error voluptatem ipsam aut quam tempora quisquam temporibus, recusandae sunt.</p>
+                <p>Quod quaerat illo ad explicabo 
+                    <div class="drop" id="dropdown-3" data-drop data-drop-render="#root">
+                        <button class="drop-button" data-drop-button>Dropdown 3</button>
+                        <div class="drop-container" data-drop-container>
+                        <span class="drop-close" data-drop-close>X</span>
+                        <p>This is Dropdown 3 container.</p>
+                        <ul class="nav">
+                            <li><a href="javascript:{}">Link #1</a></li>
+                            <li><a href="javascript:{}">Link #2</a></li>
+                            <li><a href="javascript:{}">Link #3</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    <br>
+                    magni quibusdam sit dignissimos, sequi repellat labore porro cum est, libero debitis, molestias at cupiditate totam illum repudiandae aliquam omnis, eos quam laudantium! Eos, sapiente.</p>
+                <p>Quo quaerat laborum itaque impedit a laboriosam quod nobis perferendis, accusamus nulla perspiciatis sed eius dolorem dolor. Corrupti quis modi, suscipit quas, eius dolor vel veritatis quo, ab nulla deleniti.</p>
+                <p id="dynamic"></p>
+
+                <h2>Getting Started</h2>
+
+                <table class="table api">
+                    <tr>
+                        <th width="35%">Description</th>
+                        <th>Method</th>
+                        <th>Parameter(s)</th>
+                    </tr>
+                    <tr>
+                        <td>To initialise the Drop plugin</td>
+                        <td>var myDrop = new Drop();</td>
+                        <td>No parameter, you should follow the DOM structure to add the required data-attributes</td>
+                    </tr>
+                    <tr>
+                        <td>To open a specific Drop dynamically, for instance we want to open the "Dropdown 2" dyanmically by <a href="javascript:{}" id="open-drop-2">clicking here</a> and not its actual dropdown trigger.</td>
+                        <td>myDrop.open('DROP_ID');</td>
+                        <td>1 parameter and that's the id of your Drop</td>
+                    </tr>
+                    <tr>
+                        <td>To close a specific Drop dynamically</td>
+                        <td>myDrop.close('DROP_ID');</td>
+                        <td>1 parameter and that's the id of your Drop</td>
+                    </tr>
+                    <tr>
+                        <td>To add events to your Drop for when it opens/shows, by adding multiple events to the same Drop they will simply be added to the queue and on every <code>myDrop.onOpen()</code> completion that event will be removed from the queue, therefore the next time the <code>myDrop.onOpen()</code> is triggered, simply the next handler is fired<br>
+                        <a id="attach-handler-3" href="javascript:{}">Click me</a> to attach an alert event handler to the "Dropdown 3" at the top, try! But you would only see this event once...
+                        </td>
+                        <td>myDrop.onOpen(function () { alert('Hello'); }, 'DROP_ID');</td>
+                        <td>2 parameters, the first one is the handler, in this case is an alert and the second parameter is DROP_ID that you want to attach this handler to</td>
+                    </tr>
+                    <tr>
+                        <td>Same as <code>myDrop.onOpen()</code>, the only difference is it will be fired when you close the specified Drop</td>
+                        <td>myDrop.onClose(function () { alert('Goodbye'); }, 'DROP_ID');</td>
+                        <td>Same parameters as <code>myDrop.onOpen()</code></td>
+                    </tr>
+                    <tr>
+                        <td>Unregister a drop, this is useful for when you want to disable a drop for whatever reason you want!</td>
+                        <td>myDrop.unregister('DROP_ID');</td>
+                        <td>1 parameter and that's the drop id which you want to unregister so it's no longer a drop</td>
+                    </tr>
+                    <tr>
+                        <td><h3>Register a Drop (Method 1)</h3>register a drop, this is useful for when you are retrieving the drop contents through an AJAX call or even after an AJAX call somewhere down the line <!--<span class="badge warning">ToDo</span>--><br>To create a dynamic dropdown <a id="create-drop" href="javascript:{}">Click Here</a></td>
+                        <td>myDrop.register('DROP_ID');</td>
+                        <td>1 parameter, this is the drop id which you want to register, also it must not be registered already as it will be ignored</td>
+                    </tr>
+                    <tr>
+                        <td><h3>Register a Drop (Method 2)</h3>This method allows us to register a dropdown completely on the fly without which could be very useful after an AJAX call. You can create one by calling the same method as on the right in your Console (F12) or by <a class="dynamic-drop" href="javascript:{}">Clicking Here</a></td>
+                        <td>myDrop.register('DROP_ID', {<br>
+                            'target': '#dynamic',
+                            'triggerText': 'My Dropdown',
+                            'showClose': false,
+                            'onHover': false,
+                            'html': 'The HTML for the dropdown container',
+                            'render': '#root'
+                            });</td>
+                        <td>2 parameters, first one is the drop id of which you want to register it as (this must be unique and not exists), and the second parameter is the options for the our new dropdown of which we want to register, such as the text of the dropdown button, the html inside its container etc.</td>
+                    </tr>
+                </table>
+                
+                <p>If you find this plugin useful then make sure you recommend it to others too :)</p>
+                <p></p>
+                </div>
+            </div>
+        </div>
+        </main>
+
+        <aside>
+        <div class="scrollable">
+            <div class="container">
+                
+                <h3>To Do List</h3>
+                <ul class="nav">
+                <li><a href="javascript:{}">Item #1</a></li>
+                <li><a href="javascript:{}">Item #2</a></li>
+                <li><a href="javascript:{}">Item #3</a></li>
+                <li><a href="javascript:{}">Item #4</a></li>
+                </ul>
+                
+                
+            </div>
+        </div>
+        </aside>
+
+        </div>
+    </body>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/fleet.drop.js"></script>
+    <script src="js/script.js"></script>
+</html>
